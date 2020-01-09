@@ -1,0 +1,16 @@
+<div id="wrap">
+  <div class="row" *ngIf="loaded; else loading">
+    <div class="column sidebar">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="column content">
+      <app-header></app-header>
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  Loading ...
+</ng-template>

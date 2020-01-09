@@ -1,0 +1,19 @@
+<div class="single-content">
+  <form (submit)="submit($event)">
+    <mat-form-field>
+      <input matInput placeholder="Name" type="text" autocomplete="none" name="empName" [(ngModel)]="data['empName']">
+    </mat-form-field>
+    <mat-slide-toggle [checked]="data['empActive'] ? true : false" (change)="changeActive($event)">Active</mat-slide-toggle>
+    <mat-form-field>
+      <mat-label>Select a department</mat-label>
+      <mat-select [(value)]="data['emp_dpID']">
+        <mat-option *ngFor="let item of dpData" [value]="item.dpID">{{item.dpName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="btn-row">
+      <a routerLink="/employees">All employees</a>
+      <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+  </form>
+</div>
+

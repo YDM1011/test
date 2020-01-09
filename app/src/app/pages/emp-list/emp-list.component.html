@@ -1,0 +1,50 @@
+<form (submit)="search()" class="search">
+  <mat-form-field>
+    <input matInput placeholder="Search" type="text" autocomplete="none" name="Search" [(ngModel)]="searchWord">
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Search</button>
+  <div class="search-word">
+    <span>{{searchWord}}</span>
+    <button mat-raised-button color="primary" type="button" (click)="clearSearch()">Clear</button>
+  </div>
+  <a routerLink="/employee_create">Add Employee</a>
+</form>
+<table *ngIf="data && data.length>0; else noOne">
+  <tr>
+    <td></td>
+    <td></td>
+    <td>empID</td>
+    <td>empName</td>
+    <td>empActive</td>
+    <td>empDepartment</td>
+    <td></td>
+  </tr>
+  <tr *ngFor="let item of data">
+    <td>
+      <a [routerLink]="'/employee/'+item.empID">view</a>
+    </td>
+    <td>
+      <a [routerLink]="'/employee_edit/'+item.empID">edit</a>
+    </td>
+    <td>{{item.empID}}</td>
+    <td>{{item.empName}}</td>
+    <td>{{item.empActive}}</td>
+    <td>{{item.dpName}}</td>
+    <td>
+      <button (click)="delete(item.empID)">delete</button>
+    </td>
+  </tr>
+</table>
+<div *ngIf="isPagination">
+  <mat-paginator [length]="count"
+                 [pageSize]="pageSize"
+                 (page)="checkPage($event)">
+  </mat-paginator>
+
+  <span *ngIf="pageEvent">Page size: {{pageEvent.pageIndex}}</span>
+</div>
+<ng-template #noOne>
+  <p>
+    No one result
+  </p>
+</ng-template>

@@ -1,0 +1,48 @@
+<form (submit)="search()" class="search">
+  <mat-form-field>
+    <input matInput placeholder="Search" type="text" autocomplete="none" name="Search" [(ngModel)]="searchWord">
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Search</button>
+  <div class="search-word">
+    <span>{{searchWord}}</span>
+    <button mat-raised-button color="primary" type="button" (click)="clearSearch()">Clear</button>
+  </div>
+  <a routerLink="/department_create">Add department</a>
+</form>
+<table *ngIf="data && data.length>0; else noOne">
+  <tr>
+    <td></td>
+    <td></td>
+    <td>dbID</td>
+    <td>dbName</td>
+    <td></td>
+  </tr>
+  <tr *ngFor="let item of data">
+    <td>
+      <a [routerLink]="'/department/'+item.dpID">view</a>
+    </td>
+    <td>
+      <a [routerLink]="'/department_edit/'+item.dpID">edit</a>
+    </td>
+    <td>{{item.dpID}}</td>
+    <td>{{item.dpName}}</td>
+    <td>
+      <button (click)="delete(item.dpID)">delete</button>
+    </td>
+  </tr>
+</table>
+<div>
+  <mat-paginator [length]="count"
+                    [pageSize]="pageSize"
+                    (page)="checkPage($event)">
+  </mat-paginator>
+
+  <span *ngIf="pageEvent">Page index: {{pageEvent.pageIndex}}</span>
+</div>
+
+<ng-template #noOne>
+  <p>
+    No one result
+  </p>
+</ng-template>
+

@@ -1,0 +1,23 @@
+<div>
+  <p>Id: {{data.dpID}}</p>
+  <p>Name: {{data.dpName}}</p>
+</div>
+<br>
+<div *ngIf="empData && empData.length>0; else noEmp">
+  <table>
+    <tr>
+      <td>empID</td>
+      <td>empName</td>
+      <td>empActive</td>
+    </tr>
+    <tr *ngFor="let item of empData">
+      <td>{{item.empID}}</td>
+      <td>{{item.empName}}</td>
+      <td>{{item.empActive}}</td>
+    </tr>
+  </table>
+</div>
+<ng-template #noEmp>
+  No one employee
+</ng-template>
+<a routerLink="/departments">All departments</a>

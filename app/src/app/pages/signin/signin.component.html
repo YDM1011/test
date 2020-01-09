@@ -1,0 +1,15 @@
+<div class="single-content">
+  <form (submit)="submit($event)">
+    <mat-form-field>
+      <input matInput placeholder="Login" type="text" autocomplete="none" name="Login" [(ngModel)]="data['login']">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" type="password" autocomplete="none" name="Password" [(ngModel)]="data['password']">
+    </mat-form-field>
+    <div class="btn-row">
+      <a routerLink="/signup">signup</a>
+      <button mat-raised-button color="primary" type="submit">Sign In</button>
+    </div>
+  </form>
+</div>
+

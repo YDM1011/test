@@ -1,0 +1,7 @@
+<header class="btn-row">
+  <div></div>
+  <div>
+    <a class="link" routerLink="/profile" *ngIf="user">Hello {{user.cName}}</a>
+    <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+  </div>
+</header>

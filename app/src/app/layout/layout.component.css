@@ -1,0 +1,18 @@
+.sidebar{
+  max-width: 170px;
+  height: calc(100vh - 20px);
+  border-right: 2px solid #9299ab;
+  background: #f8faff;
+}
+.content{
+  min-height: calc(100vh - 20px);
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+app-footer{
+  margin-top: auto;
+}

@@ -1,0 +1,12 @@
+<div class="single-content">
+  <form (submit)="submit($event)">
+    <mat-form-field>
+      <input matInput placeholder="Name" type="text" autocomplete="none" name="dpName" [(ngModel)]="data['dpName']">
+    </mat-form-field>
+    <div class="btn-row">
+      <a routerLink="/departments">All departments</a>
+      <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+  </form>
+</div>
+
